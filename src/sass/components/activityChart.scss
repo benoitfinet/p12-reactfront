@@ -1,0 +1,12 @@
+.tooltip {
+    background-color: #E60000;
+    width: fit-content;
+    height: fit-content;
+    &__info {
+        padding: 5px;
+        text-align: center;
+        color: white;
+        font-weight: 500;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,65 @@
+.main {
+    margin: 2% 5% 0 10%;
+    &__text {
+        font-weight: 500;
+        font-size: 48px;
+        margin: 1%;
+        &--name {
+         color: #FF0101;   
+        }
+    }
+    &__test {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__subtext {
+        font-weight: 400;
+        font-size: 18px;
+        margin: 1%;
+    }
+    &__allCharts {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 80%;
+    }
+    &__chart {
+        margin: 1%;
+        &--activity {
+            background-color: #FBFBFB;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+            border-radius: 5px;
+        }
+        &--activityText {
+            padding-left: 20px;
+            padding-top: 5px;
+        }
+        &--radar {
+            background-color: #282D30;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+            border-radius: 5px;
+        }
+        &--sessionText {
+            position: absolute;
+            opacity: 0.5;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            margin-left: 25px;
+            margin-top: 15px;
+        }
+        &--score {
+            background: #FBFBFB;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+            border-radius: 5px;
+        }
+    }
+    &__allInfos {
+        display: flex;
+        flex-direction: column;
+        width: 18%;
+        justify-content: space-between;
+        margin: 0.8%;
+    }
+}
