@@ -1,4 +1,4 @@
-import '../sass/components/infoCard.scss';
+import './infoCard.scss';
 
 function InfoCard ({ icone, nbGramme, type }) {
     return (

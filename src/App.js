@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from "./pages/Main";
-import './sass/vendors/normalized.scss'
-import User from './devInfos/User';
-import Activity from './devInfos/Activity';
-import Session from './devInfos/Session';
-import Performance from './devInfos/Performance';
+import Main from "./assets/pages/Main/Main";
+import './assets/sass/vendors/normalized.scss';
+import User from './assets/devInfos/User';
+import Activity from './assets/devInfos/Activity';
+import Session from './assets/devInfos/Session';
+import Performance from './assets/devInfos/Performance';
 
 function App() {
 
@@ -12,7 +12,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/:id" element={<Main />} />
         <Route path="/user/:id" element={<User />} />
         <Route path="/user/:id/activity" element={<Activity />} />
         <Route path="/user/:id/average-sessions" element={<Session />} />

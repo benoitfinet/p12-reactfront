@@ -1,4 +1,4 @@
-import useFetch from '../customHook/usefetch';
+import useFetch from '../components/customHook/usefetch';
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 

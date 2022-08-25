@@ -1,12 +1,11 @@
 import { RadialBar, RadialBarChart, Legend, ResponsiveContainer } from 'recharts';
 import useFetch from '../customHook/usefetch';
-import { useParams } from "react-router-dom";
-import '../sass/components/scoreChart.scss';
+import './scoreChart.scss';
+import Loader from '../Loader/Loader';
 
-function ScoreChart() {
+function ScoreChart({id}) {
 
-  let { id } = useParams();
-  const [infoUser] = useFetch(`http://localhost:3000/user/${id}`);
+  const [infoUser, isLoading] = useFetch(`http://localhost:3000/user/${id}`, 1200);
 
   function CustomLegendScore (payload) {
     return (
@@ -30,11 +29,16 @@ function ScoreChart() {
       fill : '#E60000'
     }
   ]
-
+  if(isLoading) {
+    return (
+      <div className='loader'>
+        <Loader />
+      </div>
+    )}
   return (
     <ResponsiveContainer width='100%' height='100%'>
-        <RadialBarChart cx='50%' cy='50%' innerRadius={100} barSize={10} outerRadius={120} data={newData}>
-          <RadialBar cornerRadius='50%' dataKey='newTodayScore' fill='#FFFFFF' />
+        <RadialBarChart cx='50%' cy='50%' innerRadius={100} outerRadius={120} data={newData}>
+          <RadialBar cornerRadius='100%' dataKey='newTodayScore' />
           <Legend content={<CustomLegendScore />} verticalAlign='middle'/>
         </RadialBarChart>
       </ResponsiveContainer>

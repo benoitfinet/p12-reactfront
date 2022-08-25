@@ -1,9 +1,9 @@
-import '../sass/layout/header.scss';
-import Logo from "../assets/logo.png";
-import Swimming from "../assets/swimming.png"
-import Meditate from "../assets/meditate.png"
-import Dumbbells from "../assets/dumbbells.png"
-import Cycling from "../assets/cycling.png"
+import './header.scss';
+import Logo from "../../Images/logo.png";
+import Swimming from "../../Images/swimming.png"
+import Meditate from "../../Images/meditate.png"
+import Dumbbells from "../../Images/dumbbells.png"
+import Cycling from "../../Images/cycling.png"
 
 function Header() {
     return (

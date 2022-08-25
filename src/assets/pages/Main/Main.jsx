@@ -1,25 +1,20 @@
-import '../sass/pages/main.scss';
-import '../sass/layout/header.scss';
-import { useParams } from "react-router-dom"
-import CompRadar from "../components/CompRadar";
-import useFetch from '../customHook/usefetch';
-import Header from "../components/Header";
-import ActivityChart from '../components/ActivityChart';
-import TimeSessionsChart from '../components/TimeSessionsChart';
-import ScoreChart from '../components/ScoreChart';
-import InfoCard from '../components/InfoCard';
-import calorie from '../assets/calories.png'
-import proteine from '../assets/protein.png'
-import glucide from '../assets/carbs.png';
-import lipide from '../assets/fat.png';
+import './main.scss';
+import CompRadar from "../../components/CompRadar/CompRadar";
+import useFetch from '../../components/customHook/usefetch';
+import Header from "../../components/Header/Header";
+import ActivityChart from '../../components/ActivityChart/ActivityChart';
+import TimeSessionsChart from '../../components/TimeSessionsChart/TimeSessionsChart';
+import ScoreChart from '../../components/ScoreChart/ScoreChart';
+import InfoCard from '../../components/InfoCard/InfoCard';
+import calorie from '../../Images/calories.png'
+import proteine from '../../Images/protein.png'
+import glucide from '../../Images/carbs.png';
+import lipide from '../../Images/fat.png';
 
 function Main() {
 
-    let { id } = useParams();
-    console.log(id)
-    const [infoUser] = useFetch(`http://localhost:3000/user/${id}`);
-
-    console.log(infoUser)
+    let userID = 18;
+    const [infoUser] = useFetch(`http://localhost:3000/user/${userID}`);
 
     return (
         <div>
@@ -33,18 +28,18 @@ function Main() {
                     <div className='main__allCharts'>
                         <div className='main__chart main__chart--activity' style={{ width: "100%", height: "33vh" }}>
                             <p className='main__chart--activityText'>Activité quotidienne</p>
-                            <ActivityChart />
+                            <ActivityChart id={userID} />
                         </div>
                         <div className='main__chart' style={{ width: "30%", height: "33vh" }}>
                             <div className='main__chart--sessionText'><p>Durée moyenne des</p><p>sessions</p></div>
-                            <TimeSessionsChart />
+                            <TimeSessionsChart id={userID} />
                         </div>
                         <div className='main__chart main__chart--radar' style={{ width: "30%", height: "33vh" }}>
-                            <CompRadar />
+                            <CompRadar id={userID} />
                         </div>
                         <div className='main__chart main__chart--score' style={{ width: "30%", height: "33vh" }}>
                         <div className='main__chart--sessionText'><p>Score</p></div>
-                            <ScoreChart />
+                            <ScoreChart id={userID} />
                         </div>
                     </div>
                     <div className='main__allInfos'>

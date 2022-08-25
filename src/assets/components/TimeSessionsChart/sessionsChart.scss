@@ -1,0 +1,13 @@
+.tooltipSession {
+    background-color: white;
+    &__text {
+        padding: 10px;
+    }
+}
+
+.timeSession {
+    background-color: rgba(255, 0, 0, 1);
+        &__lineChart {
+            position: relative;
+        }
+}

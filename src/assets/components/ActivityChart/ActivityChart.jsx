@@ -1,13 +1,12 @@
 import { BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis, Bar } from 'recharts';
 import useFetch from '../customHook/usefetch';
-import { useParams } from "react-router-dom"
-import '../sass/components/activityChart.scss'
+import './activityChart.scss';
+import Loader from "../Loader/Loader";
 
 
-function ActivityChart () {
+function ActivityChart({id}) {
 
-  let { id } = useParams();
-  const [infoUser] = useFetch(`http://localhost:3000/user/${id}/activity`);
+  const [infoUser, isLoading] = useFetch(`http://localhost:3000/user/${id}/activity`, 2000);
 
   infoUser?.data?.sessions.forEach(changeDay => {
     if(changeDay.day.slice(-2).startsWith(0)) {
@@ -17,7 +16,7 @@ function ActivityChart () {
     }
   })
 
-  const CustomTooltip = ({ active, payload, test }) => {
+  const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
     return (
         <div className='tooltip'>
@@ -29,6 +28,12 @@ function ActivityChart () {
 
     return null;
 };
+  if(isLoading) {
+    return (
+      <div className='loader'>
+        <Loader />
+      </div>
+    )}
 
   return (
       <ResponsiveContainer width='100%' height='80%'>

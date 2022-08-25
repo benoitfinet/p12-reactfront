@@ -1,13 +1,12 @@
 import { LineChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis, Legend } from 'recharts';
 import useFetch from '../customHook/usefetch';
-import { useParams } from "react-router-dom";
-import '../sass/components/sessionsChart.scss';
+import './sessionsChart.scss';
+import Loader from '../Loader/Loader';
 
 
-function ActivityChart () {
+function ActivityChart ({id}) {
 
-    let { id } = useParams();
-    const [infoUser] = useFetch(`http://localhost:3000/user/${id}/average-sessions`);
+    const [infoUser, isLoading] = useFetch(`http://localhost:3000/user/${id}/average-sessions`, 900);
 
     console.log(infoUser)
 
@@ -45,15 +44,20 @@ function ActivityChart () {
             addDay.newDay = "D"
         }
       })
-
+      if(isLoading) {
+        return (
+          <div className='loader'>
+            <Loader />
+          </div>
+        )}
     return (
-        <ResponsiveContainer width='100%' height='100%' className='objectif-responsive'>
+        <ResponsiveContainer width='100%' height='100%' className='timeSession'>
         <LineChart
-        className='objectif-line'
+        className='timeSession__lineChart'
         width='100%' height='100%' data={infoUser?.data?.sessions}
         margin={{ top: 5, right: 10, left: 10, bottom: 5 }}
         onMouseMove={(e) => {
-            const div = document.getElementsByClassName('objectif-responsive')[0]
+            const div = document.getElementsByClassName('timeSession')[0]
             if (e.isTooltipActive) {
             const windowWidth = div.clientWidth
             const mouseXpercentage = Math.round((e.activeCoordinate.x / windowWidth) * 100)

@@ -1,11 +1,10 @@
 import { Legend, PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer } from 'recharts';
 import useFetch from '../customHook/usefetch';
-import { useParams } from "react-router-dom"
+import Loader from '../Loader/Loader';
 
-function CompRadar() {
+function CompRadar({id}) {
 
-  let { id } = useParams();
-  const [infoUser] = useFetch(`http://localhost:3000/user/${id}/performance`);
+  const [infoUser, isLoading] = useFetch(`http://localhost:3000/user/${id}/performance`, 700);
 
   infoUser?.data?.data.forEach(addKind => {
     if(addKind.kind === 1) {
@@ -26,7 +25,12 @@ function CompRadar() {
       addKind.newKind = "Cardio"
     }
   })
-
+  if(isLoading) {
+    return (
+      <div className='loader'>
+        <Loader />
+      </div>
+    )}
   return (
     <ResponsiveContainer width='100%' height='100%'>
         <RadarChart width='100%' height='100%' data={infoUser?.data?.data}>
