@@ -38,7 +38,7 @@ function Main() {
                             <CompRadar id={userID} />
                         </div>
                         <div className='main__chart main__chart--score main__chart--bottom'>
-                            <div className='main__chart--sessionText'><p>Score</p></div>
+                            <div className='main__chart--scoreText'><p>Score</p></div>
                             <ScoreChart id={userID} />
                         </div>
                     </div>
