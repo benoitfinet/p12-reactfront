@@ -2,12 +2,12 @@ import { Legend, PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContain
 import useFetch from '../customHook/usefetch';
 import Loader from '../Loader/Loader';
 
-function CompRadar({id}) {
+function CompRadar({ id }) {
 
   const [infoUser, isLoading] = useFetch(`http://localhost:3000/user/${id}/performance`, 700);
 
   infoUser?.data?.data.forEach(addKind => {
-    if(addKind.kind === 1) {
+    if (addKind.kind === 1) {
       addKind.newKind = "Intensité"
     } else if (addKind.kind === 2) {
       addKind.newKind = "Vitesse"
@@ -25,21 +25,22 @@ function CompRadar({id}) {
       addKind.newKind = "Cardio"
     }
   })
-  if(isLoading) {
+  if (isLoading) {
     return (
       <div className='loader'>
         <Loader />
       </div>
-    )}
+    )
+  }
   return (
     <ResponsiveContainer width='100%' height='100%'>
-        <RadarChart width='100%' height='100%' data={infoUser?.data?.data}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey='newKind' stroke='#FFFFFF' fontSize={14} tickLine={false} />
-          <Radar dataKey='value' stroke='#E60000' fill='#E60000' fillOpacity={0.7} legendType='none' />
-          <Legend />
-        </RadarChart>
-      </ResponsiveContainer>
+      <RadarChart width='100%' height='100%' data={infoUser?.data?.data}>
+        <PolarGrid />
+        <PolarAngleAxis dataKey='newKind' stroke='#FFFFFF' fontSize={14} tickLine={false} />
+        <Radar dataKey='value' stroke='#E60000' fill='#E60000' fillOpacity={0.7} legendType='none' />
+        <Legend />
+      </RadarChart>
+    </ResponsiveContainer>
   );
 }
 

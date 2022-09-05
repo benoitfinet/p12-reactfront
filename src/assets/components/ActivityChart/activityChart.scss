@@ -2,6 +2,7 @@
     background-color: #E60000;
     width: fit-content;
     height: fit-content;
+
     &__info {
         padding: 5px;
         text-align: center;
@@ -9,4 +10,10 @@
         font-weight: 500;
         font-size: 12px;
     }
+}
+
+.customFormatter {
+    margin-right: 30px;
+    margin-left: 15px;
+    color: #74798C;
 }

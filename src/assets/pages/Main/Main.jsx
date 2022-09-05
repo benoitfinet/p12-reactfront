@@ -26,33 +26,33 @@ function Main() {
                 </div>
                 <div className='main__test'>
                     <div className='main__allCharts'>
-                        <div className='main__chart main__chart--activity' style={{ width: "100%", height: "33vh" }}>
+                        <div className='main__chart main__chart--activity'>
                             <p className='main__chart--activityText'>Activité quotidienne</p>
                             <ActivityChart id={userID} />
                         </div>
-                        <div className='main__chart' style={{ width: "30%", height: "33vh" }}>
+                        <div className='main__chart main__chart--bottom'>
                             <div className='main__chart--sessionText'><p>Durée moyenne des</p><p>sessions</p></div>
                             <TimeSessionsChart id={userID} />
                         </div>
-                        <div className='main__chart main__chart--radar' style={{ width: "30%", height: "33vh" }}>
+                        <div className='main__chart main__chart--radar main__chart--bottom'>
                             <CompRadar id={userID} />
                         </div>
-                        <div className='main__chart main__chart--score' style={{ width: "30%", height: "33vh" }}>
-                        <div className='main__chart--sessionText'><p>Score</p></div>
+                        <div className='main__chart main__chart--score main__chart--bottom'>
+                            <div className='main__chart--sessionText'><p>Score</p></div>
                             <ScoreChart id={userID} />
                         </div>
                     </div>
                     <div className='main__allInfos'>
-                        <div className='main__info' style={{ width: "100%", height: "20%" }}>
+                        <div className='main__info'>
                             <InfoCard icone={calorie} nbGramme={infoUser?.data?.keyData?.calorieCount} type='Calories' />
                         </div>
-                        <div className='main__info' style={{ width: "100%", height: "20%" }}>
+                        <div className='main__info'>
                             <InfoCard icone={proteine} nbGramme={infoUser?.data?.keyData?.proteinCount} type='Proteines' />
                         </div>
-                        <div className='main__info' style={{ width: "100%", height: "20%" }}>
+                        <div className='main__info'>
                             <InfoCard icone={glucide} nbGramme={infoUser?.data?.keyData?.carbohydrateCount} type='Glucides' />
                         </div>
-                        <div className='main__info' style={{ width: "100%", height: "20%" }}>
+                        <div className='main__info'>
                             <InfoCard icone={lipide} nbGramme={infoUser?.data?.keyData?.lipidCount} type='Lipides' />
                         </div>
                     </div>
@@ -61,5 +61,5 @@ function Main() {
         </div>
     )
 }
- 
+
 export default Main

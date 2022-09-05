@@ -3,11 +3,11 @@ import useFetch from '../customHook/usefetch';
 import './scoreChart.scss';
 import Loader from '../Loader/Loader';
 
-function ScoreChart({id}) {
+function ScoreChart({ id }) {
 
   const [infoUser, isLoading] = useFetch(`http://localhost:3000/user/${id}`, 1200);
 
-  function CustomLegendScore (payload) {
+  function CustomLegendScore(payload) {
     return (
       <div className='legendScore'>
         <p className='legendScore__number'>
@@ -21,27 +21,28 @@ function ScoreChart({id}) {
 
   let newData = [
     {
-      newTodayScore : 100,
-      fill : '#FFFFFF'
+      newTodayScore: 100,
+      fill: '#FFFFFF'
     },
     {
-      newTodayScore : infoUser?.data?.todayScore * 100,
-      fill : '#E60000'
+      newTodayScore: infoUser?.data?.todayScore * 100,
+      fill: '#E60000'
     }
   ]
-  if(isLoading) {
+  if (isLoading) {
     return (
       <div className='loader'>
         <Loader />
       </div>
-    )}
+    )
+  }
   return (
     <ResponsiveContainer width='100%' height='100%'>
-        <RadialBarChart cx='50%' cy='50%' innerRadius={100} outerRadius={120} data={newData}>
-          <RadialBar cornerRadius='100%' dataKey='newTodayScore' />
-          <Legend content={<CustomLegendScore />} verticalAlign='middle'/>
-        </RadialBarChart>
-      </ResponsiveContainer>
+      <RadialBarChart startAngle={90} endAngle={470} cx='50%' cy='50%' innerRadius={100} outerRadius={120} data={newData}>
+        <RadialBar cornerRadius='100%' dataKey='newTodayScore' />
+        <Legend content={<CustomLegendScore />} verticalAlign='middle' />
+      </RadialBarChart>
+    </ResponsiveContainer>
   );
 }
 
