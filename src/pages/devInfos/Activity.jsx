@@ -10,6 +10,7 @@ function Activity() {
 
     const [dataUser, setDataUser] = useState(null);
     const [dataActivity, setDataActivity] = useState(null);
+    console.log(dataActivity)
 
     useEffect(() => {
         getData()
