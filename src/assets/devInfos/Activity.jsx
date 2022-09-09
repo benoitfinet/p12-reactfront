@@ -14,20 +14,20 @@ function Activity() {
     useEffect(() => {
         getData()
     })
-    
-    async function getData () {
+
+    async function getData() {
         const request = await user;
         const requestActivity = await activityUser;
         setDataUser(request.data.keyData)
         setDataActivity(requestActivity.data.sessions)
+        request.data.keyData.sessions = requestActivity.data.sessions
     }
 
     return (
-        <div style={{paddingLeft : "10px"}}>
+        <div style={{ paddingLeft: "10px" }}>
             <p>{JSON.stringify(dataUser)}</p>
-            <p>{JSON.stringify(dataActivity)}</p>
         </div>
     )
 }
- 
+
 export default Activity
