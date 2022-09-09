@@ -1,4 +1,4 @@
-import useFetch from '../components/customHook/usefetch';
+import useFetch from '../../components/customHook/usefetch';
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -12,17 +12,17 @@ function Activity() {
     useEffect(() => {
         getData()
     })
-    
-    async function getData () {
+
+    async function getData() {
         const request = await performance;
-            setPerformanceUser(request.data)
+        setPerformanceUser(request.data)
     }
 
     return (
-        <div style={{paddingLeft : "10px"}}>
+        <div style={{ paddingLeft: "10px" }}>
             <p>{JSON.stringify(performanceUser)}</p>
         </div>
     )
 }
- 
+
 export default Activity

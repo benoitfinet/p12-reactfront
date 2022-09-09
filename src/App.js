@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from "./assets/pages/Main/Main";
+import Main from "./pages/Main/Main";
 import './assets/sass/vendors/normalized.scss';
-import User from './assets/devInfos/User';
-import Activity from './assets/devInfos/Activity';
-import Session from './assets/devInfos/Session';
-import Performance from './assets/devInfos/Performance';
+import User from './pages/devInfos/User';
+import Activity from './pages/devInfos/Activity';
+import Session from './pages/devInfos/Session';
+import Performance from './pages/devInfos/Performance';
 
 function App() {
 

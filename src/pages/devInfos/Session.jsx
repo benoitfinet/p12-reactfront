@@ -1,4 +1,4 @@
-import useFetch from '../components/customHook/usefetch';
+import useFetch from '../../components/customHook/usefetch';
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -12,17 +12,17 @@ function Activity() {
     useEffect(() => {
         getData()
     })
-    
-    async function getData () {
+
+    async function getData() {
         const request = await session;
         setsessionUser(request.data.sessions)
     }
 
     return (
-        <div style={{paddingLeft : "10px"}}>
+        <div style={{ paddingLeft: "10px" }}>
             <p>{JSON.stringify(sessionUser)}</p>
         </div>
     )
 }
- 
+
 export default Activity

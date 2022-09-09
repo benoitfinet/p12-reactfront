@@ -6,10 +6,10 @@ import ActivityChart from '../../components/ActivityChart/ActivityChart';
 import TimeSessionsChart from '../../components/TimeSessionsChart/TimeSessionsChart';
 import ScoreChart from '../../components/ScoreChart/ScoreChart';
 import InfoCard from '../../components/InfoCard/InfoCard';
-import calorie from '../../Images/calories.png'
-import proteine from '../../Images/protein.png'
-import glucide from '../../Images/carbs.png';
-import lipide from '../../Images/fat.png';
+import calorie from '../../assets/Images/calories.png'
+import proteine from '../../assets/Images/protein.png'
+import glucide from '../../assets/Images/carbs.png';
+import lipide from '../../assets/Images/fat.png';
 
 function Main() {
 
