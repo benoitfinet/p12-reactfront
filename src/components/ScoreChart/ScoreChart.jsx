@@ -5,7 +5,13 @@ import Loader from '../Loader/Loader';
 
 function ScoreChart({ id }) {
 
-  const [infoUser, isLoading] = useFetch(`http://localhost:3000/user/${id}`, 1200);
+  const [infoUser, isLoading, err] = useFetch(`http://localhost:3000/user/${id}`, 1200, false);
+
+  /**
+ * Légende personnalisée
+ * Permet d'afficher la valeur, en pourcentage, du score moyen de l'utilisateur
+ * Se référer à la documentation Recharts (https://recharts.org/en-US/api/Legend)
+ */
 
   function CustomLegendScore(payload) {
     return (
@@ -19,6 +25,11 @@ function ScoreChart({ id }) {
     )
   }
 
+  /**
+   * Permet de retravailler les datas dans le but d'avoir une valeur de correspondance
+   * Pour que le graphique fonctionne, il faut lui donner une valeur max (100%) pour que le reste s'affiche en fonction de celle-ci
+   */
+
   let newData = [
     {
       newTodayScore: 100,
@@ -29,6 +40,11 @@ function ScoreChart({ id }) {
       fill: '#E60000'
     }
   ]
+
+  /**
+* Mise en place et en forme du loader
+*/
+
   if (isLoading) {
     return (
       <div className='loader'>
@@ -36,6 +52,22 @@ function ScoreChart({ id }) {
       </div>
     )
   }
+
+  /**
+* Affiche un message d'erreur dans le cas où les données ne sont pas accessibles
+*/
+
+  if (err) {
+    return (
+      <p>Une erreur est survenue lors du chargement des données</p>
+    )
+  }
+
+  /**
+* Composant retourné "RadialBarChart" correspondant à la section "Score moyen"
+* Exemple d'utilisation dans la documentation : https://recharts.org/en-US/api/RadialBarChart
+*/
+
   return (
     <ResponsiveContainer width='100%' height='100%'>
       <RadialBarChart startAngle={90} endAngle={470} cx='50%' cy='50%' innerRadius={100} outerRadius={120} data={newData}>

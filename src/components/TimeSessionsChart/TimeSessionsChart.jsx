@@ -6,7 +6,14 @@ import Loader from '../Loader/Loader';
 
 function ActivityChart({ id }) {
 
-    const [infoUser, isLoading] = useFetch(`http://localhost:3000/user/${id}/average-sessions`, 900);
+    const [infoUser, isLoading, err] = useFetch(`http://localhost:3000/user/${id}/average-sessions`, 900, false);
+
+    /**
+ * Tooltip personnalisé
+ * Permet d'afficher la valeur en minutes
+ * active = au passage du curseur
+ * Se référer à la documentation Recharts (https://recharts.org/en-US/guide/customize)
+ */
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -19,6 +26,12 @@ function ActivityChart({ id }) {
 
         return null;
     };
+
+    /**
+ * Permet d'ajouter dans les datas une valeur en fonction de la donnée "day"
+ * Affiche donc la première lettre des jours de la semaine
+ * Indispensable pour l'affichage dans le composant afin de respecter la maquette v1.0
+ */
 
     infoUser?.data?.sessions.forEach(addDay => {
         if (addDay.day === 1) {
@@ -42,6 +55,11 @@ function ActivityChart({ id }) {
             addDay.newDay = "D"
         }
     })
+
+    /**
+ * Mise en place et en forme du loader
+ */
+
     if (isLoading) {
         return (
             <div className='loader'>
@@ -49,6 +67,22 @@ function ActivityChart({ id }) {
             </div>
         )
     }
+
+    /**
+ * Affiche un message d'erreur dans le cas où les données ne sont pas accessibles
+ */
+
+    if (err) {
+        return (
+            <p>Une erreur est survenue lors du chargement des données</p>
+        )
+    }
+
+    /**
+* Composant retourné "LineChart" correspondant à la section "Durée moyenne des sessions"
+* Exemple d'utilisation dans la documentation : https://recharts.org/en-US/api/LineChart
+*/
+
     return (
         <ResponsiveContainer width='100%' height='100%' className='timeSession'>
             <LineChart

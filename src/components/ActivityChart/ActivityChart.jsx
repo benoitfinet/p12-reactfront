@@ -6,7 +6,17 @@ import Loader from "../Loader/Loader";
 
 function ActivityChart({ id }) {
 
-  const [infoUser, isLoading] = useFetch(`http://localhost:3000/user/${id}/activity`, 2000);
+  const [infoUser, isLoading, err] = useFetch(`http://localhost:3000/user/${id}/activity`, 2000, false);
+
+  /**
+   * Permet de récupérer uniquement les deux derniers chiffres des dates (donc le jour du mois)
+   * Puis affiche uniquement le dernier chiffre si ça commence par un zéro
+   * ou les deux derniers chiffres dans le cas inverse
+   * Exemple :
+   * si la date est "day: '2020-07-01'", je ne récupère que le 1 (donc 1er Juillet)
+   * si la date est "day: '2020-02-25'", je ne récupère que le 25 (donc 25 Février)
+   * Indispensable pour le respect de la maquette v1.0
+   */
 
   infoUser?.data?.sessions.forEach(changeDay => {
     if (changeDay.day.slice(-2).startsWith(0)) {
@@ -15,6 +25,13 @@ function ActivityChart({ id }) {
       changeDay.shortDay = changeDay.day.slice(-2)
     }
   })
+
+  /**
+   * Tooltip personnalisé
+   * Permet d'afficher les valeurs du poids et des Kcal
+   * active = au passage du curseur
+   * Se référer à la documentation Recharts (https://recharts.org/en-US/guide/customize)
+   */
 
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -29,11 +46,18 @@ function ActivityChart({ id }) {
     return null;
   };
 
-  const customFormatter = (value) => {
+  /**
+   * Formatter personnalisé
+   * Se référer à la documentation Recharts (https://recharts.org/en-US/api/Tooltip#formatter)
+   */
 
+  const customFormatter = (value) => {
     return <span className='customFormatter'>{value}</span>;
   };
 
+  /**
+   * Mise en place et en forme du loader
+   */
 
   if (isLoading) {
     return (
@@ -42,6 +66,21 @@ function ActivityChart({ id }) {
       </div>
     )
   }
+
+  /**
+   * Affiche un message d'erreur dans le cas où les données ne sont pas accessibles
+   */
+
+  if (err) {
+    return (
+      <p>Une erreur est survenue lors du chargement des données</p>
+    )
+  }
+
+  /**
+   * Composant retourné "BarChart" correspondant à la section "Activité quotidienne"
+   * Exemple d'utilisation dans la documentation : https://recharts.org/en-US/api/BarChart
+   */
 
   return (
     <ResponsiveContainer width='100%' height='80%'>
