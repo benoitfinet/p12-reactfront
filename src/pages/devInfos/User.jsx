@@ -1,27 +1,25 @@
-import useFetch from '../../components/customHook/usefetch';
 import { useParams } from "react-router-dom"
-import { useState, useEffect } from "react";
+
+import useFetch from '../../components/customHook/usefetch';
+import UserFactory from '../../factories/UserFactory';
 
 function User() {
 
+    //use to target the if directly from url on screen
     let { id } = useParams();
-    const [infoUser] = useFetch(`http://localhost:3000/user/${id}`);
 
-    const [data, setData] = useState(null);
+    //Fetching datas from API
+    const [infoUser] = useFetch(`http://localhost:3000/user/${id}`, UserFactory, "user");
 
-    useEffect(() => {
-        getData()
-    })
-
-    async function getData() {
-        const request = await infoUser;
-        setData(request.data.userInfos)
-        request.data.userInfos.score = request.data.todayScore
-    }
+    //Create a new object with just datas we want to use
+    const newData = [
+        infoUser.userInfos,
+        infoUser.todayScore
+    ]
 
     return (
         <div style={{ paddingLeft: "10px" }}>
-            <p>{JSON.stringify(data)}</p>
+            <p>{JSON.stringify(newData)}</p>
         </div>
     )
 }

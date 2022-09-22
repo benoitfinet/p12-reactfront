@@ -1,26 +1,19 @@
-import useFetch from '../../components/customHook/usefetch';
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+
+import useFetch from '../../components/customHook/usefetch';
+import PerformanceFactory from '../../factories/PerformanceFactory';
 
 function Activity() {
 
+    //use to target the if directly from url on screen
     let { id } = useParams();
-    const [performance] = useFetch(`http://localhost:3000/user/${id}/performance`);
 
-    const [performanceUser, setPerformanceUser] = useState(null);
-
-    useEffect(() => {
-        getData()
-    })
-
-    async function getData() {
-        const request = await performance;
-        setPerformanceUser(request.data)
-    }
+    //Fetching datas from API
+    const [performance] = useFetch(`http://localhost:3000/user/${id}/performance`, PerformanceFactory, "api");
 
     return (
         <div style={{ paddingLeft: "10px" }}>
-            <p>{JSON.stringify(performanceUser)}</p>
+            <p>{JSON.stringify(performance)}</p>
         </div>
     )
 }

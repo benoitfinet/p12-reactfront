@@ -1,26 +1,19 @@
-import useFetch from '../../components/customHook/usefetch';
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+
+import useFetch from '../../components/customHook/usefetch';
+import AverageSessionsFactory from '../../factories/AverageSessionsFactory';
 
 function Activity() {
 
+    //use to target the if directly from url on screen
     let { id } = useParams();
-    const [session] = useFetch(`http://localhost:3000/user/${id}/average-sessions`);
 
-    const [sessionUser, setsessionUser] = useState(null);
-
-    useEffect(() => {
-        getData()
-    })
-
-    async function getData() {
-        const request = await session;
-        setsessionUser(request.data.sessions)
-    }
+    //Fetching datas from API
+    const [session] = useFetch(`http://localhost:3000/user/${id}/average-sessions`, AverageSessionsFactory, "api");
 
     return (
         <div style={{ paddingLeft: "10px" }}>
-            <p>{JSON.stringify(sessionUser)}</p>
+            <p>{JSON.stringify(session.sessions)}</p>
         </div>
     )
 }

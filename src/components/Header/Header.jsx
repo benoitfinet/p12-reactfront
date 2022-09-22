@@ -1,4 +1,5 @@
 import './header.scss';
+
 import Logo from "../../assets/Images/logo.png";
 import Swimming from "../../assets/Images/swimming.png"
 import Meditate from "../../assets/Images/meditate.png"

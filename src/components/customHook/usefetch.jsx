@@ -1,37 +1,55 @@
 import { useState, useEffect } from "react";
+import { PropTypes } from "prop-types";
 
 /**
- * @param {string} url
- * @param {number} loading
- * @param {booleen} err
- * Composant à utiliser sur une autre page ou un autre composant pour faire un fetch de données
- * exemple : "const [infoUser, isLoading, err] = useFetch(`http://localhost:3000/user/${id}/performance`, 700, false)"
+ * A custom hook to fetch data from an url in a component
+ * @param url : url of the data we want to fetch
+ * @param Factory : factory pattern to use constructor pattern
+ * @param type : define the type of the API, in case we had to change API
+ * @param loading : set manually the timer of the loader component
+ * @param err : set the error message
+ * @return the data matching the factory and model
+ * @return the booleen for the loader
+ * @return the booleen for the error
  */
 
-const useFetch = (url, loading = 1000, err) => {
+const useFetch = (url, Factory, type, loading = 1000, err) => {
 
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [dataError, setDataError] = useState(true);
+  const [activityData, setActivityData] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
+      .then((res) => {
+        return res.json()
+      })
+      .then((result) => {
         setTimeout(() => {
-          setData(data)
-          setIsLoading(false)
+          const sessionData = new Factory(result.data, type);
+          setActivityData(sessionData)
+          setIsLoaded(true);
         }, loading);
+
       })
       .catch((err) => {
+        setIsLoaded(true);
+        setError(err);
         console.log(err);
-        setIsLoading(false)
-        setDataError(true)
       })
 
-  }, [url, loading, err]);
+  }, [url, Factory, type, loading, err]);
 
-  return [data, isLoading, dataError];
+  return [activityData, isLoaded, error];
 };
+
+//PropTypes for url, Factory, type, loading, err
+useFetch.propTypes = {
+  url: PropTypes.string,
+  Factory: PropTypes.string,
+  type: PropTypes.string,
+  loading: PropTypes.number,
+  err: PropTypes.booleen
+}
 
 export default useFetch;

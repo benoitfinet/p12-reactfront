@@ -1,4 +1,12 @@
 import './main.scss';
+
+import calorie from '../../assets/Images/calories.png'
+import proteine from '../../assets/Images/protein.png'
+import glucide from '../../assets/Images/carbs.png';
+import lipide from '../../assets/Images/fat.png';
+
+import UserFactory from '../../factories/UserFactory';
+
 import CompRadar from "../../components/CompRadar/CompRadar";
 import useFetch from '../../components/customHook/usefetch';
 import Header from "../../components/Header/Header";
@@ -6,22 +14,21 @@ import ActivityChart from '../../components/ActivityChart/ActivityChart';
 import TimeSessionsChart from '../../components/TimeSessionsChart/TimeSessionsChart';
 import ScoreChart from '../../components/ScoreChart/ScoreChart';
 import InfoCard from '../../components/InfoCard/InfoCard';
-import calorie from '../../assets/Images/calories.png'
-import proteine from '../../assets/Images/protein.png'
-import glucide from '../../assets/Images/carbs.png';
-import lipide from '../../assets/Images/fat.png';
 
 function Main() {
 
+    //as a prototype, this website need the userID to be set manually
     let userID = 18;
-    const [infoUser] = useFetch(`http://localhost:3000/user/${userID}`);
+
+    //Fetching datas from API
+    const [infoUser] = useFetch(`http://localhost:3000/user/${userID}`, UserFactory, "user");
 
     return (
         <div>
             <Header />
             <div className='main'>
                 <div>
-                    <p className='main__text'>Bonjour <span className='main__text--name'>{infoUser?.data?.userInfos?.firstName}</span></p>
+                    <p className='main__text'>Bonjour <span className='main__text--name'>{infoUser?.userInfos?.firstName}</span></p>
                     <p className='main__subtext'>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
                 </div>
                 <div className='main__test'>
@@ -44,16 +51,16 @@ function Main() {
                     </div>
                     <div className='main__allInfos'>
                         <div className='main__info'>
-                            <InfoCard icone={calorie} nbGramme={infoUser?.data?.keyData?.calorieCount} type='Calories' />
+                            <InfoCard icone={calorie} nbGramme={infoUser?.keyData?.calorieCount} type='Calories' />
                         </div>
                         <div className='main__info'>
-                            <InfoCard icone={proteine} nbGramme={infoUser?.data?.keyData?.proteinCount} type='Proteines' />
+                            <InfoCard icone={proteine} nbGramme={infoUser?.keyData?.proteinCount} type='Proteines' />
                         </div>
                         <div className='main__info'>
-                            <InfoCard icone={glucide} nbGramme={infoUser?.data?.keyData?.carbohydrateCount} type='Glucides' />
+                            <InfoCard icone={glucide} nbGramme={infoUser?.keyData?.carbohydrateCount} type='Glucides' />
                         </div>
                         <div className='main__info'>
-                            <InfoCard icone={lipide} nbGramme={infoUser?.data?.keyData?.lipidCount} type='Lipides' />
+                            <InfoCard icone={lipide} nbGramme={infoUser?.keyData?.lipidCount} type='Lipides' />
                         </div>
                     </div>
                 </div>
@@ -61,5 +68,4 @@ function Main() {
         </div>
     )
 }
-
 export default Main

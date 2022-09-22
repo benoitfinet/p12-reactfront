@@ -1,6 +1,8 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from "./pages/Main/Main";
 import './assets/sass/vendors/normalized.scss';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import Main from "./pages/Main/Main";
 import User from './pages/devInfos/User';
 import Activity from './pages/devInfos/Activity';
 import Session from './pages/devInfos/Session';

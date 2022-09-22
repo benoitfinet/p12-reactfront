@@ -1,32 +1,24 @@
-import useFetch from '../../components/customHook/usefetch';
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+
+import useFetch from '../../components/customHook/usefetch';
+import UserFactory from '../../factories/UserFactory';
+import ActivityFactory from '../../factories/ActivityFactory';
 
 function Activity() {
 
+    //use to target the if directly from url on screen
     let { id } = useParams();
-    const [user] = useFetch(`http://localhost:3000/user/${id}`);
-    const [activityUser] = useFetch(`http://localhost:3000/user/${id}/activity`);
 
-    const [dataUser, setDataUser] = useState(null);
-    const [dataActivity, setDataActivity] = useState(null);
-    console.log(dataActivity)
+    //Fetching datas from API
+    const [user] = useFetch(`http://localhost:3000/user/${id}`, UserFactory, "user");
+    const [activityUser] = useFetch(`http://localhost:3000/user/${id}/activity`, ActivityFactory, "api");
 
-    useEffect(() => {
-        getData()
-    })
-
-    async function getData() {
-        const request = await user;
-        const requestActivity = await activityUser;
-        setDataUser(request.data.keyData)
-        setDataActivity(requestActivity.data.sessions)
-        request.data.keyData.sessions = requestActivity.data.sessions
-    }
+    //Return a new object with weight, calories burned and informations on multiple elements for the day
+    const newObject = Object.assign(user.keyData, activityUser)
 
     return (
         <div style={{ paddingLeft: "10px" }}>
-            <p>{JSON.stringify(dataUser)}</p>
+            <p>{JSON.stringify(newObject)}</p>
         </div>
     )
 }
