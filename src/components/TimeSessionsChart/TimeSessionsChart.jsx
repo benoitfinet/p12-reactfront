@@ -15,9 +15,9 @@ function ActivityChart({ id }) {
 
     /**
      * Required for customized the tooltip in the chart
+     * Please refere to the Recharts documentation (https://recharts.org/en-US/guide/customize)
      * @param active, payload
      * @returns customized tooltip components
-     * Please refere to the Recharts documentation (https://recharts.org/en-US/guide/customize)
      */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {

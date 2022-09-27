@@ -15,9 +15,9 @@ function ScoreChart({ id }) {
 
   /**
    * Required for customized the legend in the chart
+   * Please refere to the Recharts documentation (https://recharts.org/en-US/api/Legend)
    * @param payload
    * @returns customized legend components
-   * Please refere to the Recharts documentation (https://recharts.org/en-US/api/Legend)
    */
   function CustomLegendScore(payload) {
     return (

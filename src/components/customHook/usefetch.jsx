@@ -12,7 +12,6 @@ import { PropTypes } from "prop-types";
  * @return the booleen for the loader
  * @return the booleen for the error
  */
-
 const useFetch = (url, Factory, type, loading = 1000, err) => {
 
   const [activityData, setActivityData] = useState([]);
@@ -35,7 +34,7 @@ const useFetch = (url, Factory, type, loading = 1000, err) => {
       .catch((err) => {
         setIsLoaded(true);
         setError(err);
-        console.log(err);
+        console.error(err);
       })
 
   }, [url, Factory, type, loading, err]);

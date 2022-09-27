@@ -1,16 +1,16 @@
 Sportsee - Dashboard
 The brand new front page for the App Sportsee
 
-Prerequistes
+#Prerequistes
 node v16.14.0
 
-The technologies used are :
+#The technologies used are :
 
 React v18.2.0
 Sass v1.54
 Recharts v2.1.13
 
-I recommand the following IDE : 
+#I recommand the following IDE : 
 
 Visual Studio Code
 
@@ -18,7 +18,7 @@ Install your environment
 Install the backend
 First, you need to install the backend API.
 
-Launching the API:
+#Launching the API:
 
 Fork the repository
 Clone it on your computer.
@@ -34,7 +34,7 @@ The API will run on http://localhost:3000 .
 
 For more information, please check the git repository of the API.
 
-Set up the frontend environment
+#Set up the frontend environment
 
 Fork the repository
 Clone it on your computer
@@ -42,13 +42,13 @@ Install all the dependencies with npm
 
 npm i
 
-Lauch the app with npm start
+#Lauch the app with npm start
 
 npm start
 
 Open [http://localhost:3001] on your browser
 
-Endpoints
+#Endpoints
 
 As a developer, those endpoints should be helpfull :
 (replace :id by the id of user you want to see - Two choices for now : 12 or 18)
