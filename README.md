@@ -1,5 +1,5 @@
 # Sportsee - Dashboard
-# The brand new front page for the App Sportsee
+## The brand new front page for the App Sportsee
 
 ### Prerequistes
 node v16.14.0
