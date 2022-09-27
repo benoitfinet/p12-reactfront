@@ -4,7 +4,7 @@
 ### Prerequistes
 node v16.14.0
 
-#The technologies used are :
+### The technologies used are :
 
 React v18.2.0
 Sass v1.54
