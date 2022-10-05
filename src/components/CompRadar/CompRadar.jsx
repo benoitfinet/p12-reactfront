@@ -6,6 +6,11 @@ import { PropTypes } from "prop-types";
 import useFetch from '../customHook/usefetch';
 import Loader from '../Loader/Loader';
 
+/**
+ * The radar chart
+ * @param {number} id : set the id of user
+ * @returns CompRadar.jsx
+ */
 function CompRadar({ id }) {
 
   //Fetching datas from API

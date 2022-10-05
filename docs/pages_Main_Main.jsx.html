@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Main/Main.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Main/Main.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import './main.scss';
+
+import calorie from '../../assets/Images/calories.png'
+import proteine from '../../assets/Images/protein.png'
+import glucide from '../../assets/Images/carbs.png';
+import lipide from '../../assets/Images/fat.png';
+
+import UserFactory from '../../factories/UserFactory';
+
+import CompRadar from "../../components/CompRadar/CompRadar";
+import useFetch from '../../components/customHook/usefetch';
+import Header from "../../components/Header/Header";
+import ActivityChart from '../../components/ActivityChart/ActivityChart';
+import TimeSessionsChart from '../../components/TimeSessionsChart/TimeSessionsChart';
+import ScoreChart from '../../components/ScoreChart/ScoreChart';
+import InfoCard from '../../components/InfoCard/InfoCard';
+
+/**
+ * Main page of the application
+ * @returns Main.jsx
+ */
+function Main() {
+
+    //as a prototype, this website need the userID to be set manually
+    let userID = 18;
+
+    //Fetching datas from API
+    const [infoUser] = useFetch(`http://localhost:3000/user/${userID}`, UserFactory, "user");
+
+    return (
+        &lt;div>
+            &lt;Header />
+            &lt;div className='main'>
+                &lt;div>
+                    &lt;p className='main__text'>Bonjour &lt;span className='main__text--name'>{infoUser?.userInfos?.firstName}&lt;/span>&lt;/p>
+                    &lt;p className='main__subtext'>Félicitation ! Vous avez explosé vos objectifs hier 👏&lt;/p>
+                &lt;/div>
+                &lt;div className='main__test'>
+                    &lt;div className='main__allCharts'>
+                        &lt;div className='main__chart main__chart--activity'>
+                            &lt;p className='main__chart--activityText'>Activité quotidienne&lt;/p>
+                            &lt;ActivityChart id={userID} />
+                        &lt;/div>
+                        &lt;div className='main__chart main__chart--bottom'>
+                            &lt;div className='main__chart--sessionText'>&lt;p>Durée moyenne des&lt;/p>&lt;p>sessions&lt;/p>&lt;/div>
+                            &lt;TimeSessionsChart id={userID} />
+                        &lt;/div>
+                        &lt;div className='main__chart main__chart--radar main__chart--bottom'>
+                            &lt;CompRadar id={userID} />
+                        &lt;/div>
+                        &lt;div className='main__chart main__chart--score main__chart--bottom'>
+                            &lt;div className='main__chart--scoreText'>&lt;p>Score&lt;/p>&lt;/div>
+                            &lt;ScoreChart id={userID} />
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div className='main__allInfos'>
+                        &lt;div className='main__info'>
+                            &lt;InfoCard icone={calorie} nbGramme={infoUser?.keyData?.calorieCount} type='Calories' />
+                        &lt;/div>
+                        &lt;div className='main__info'>
+                            &lt;InfoCard icone={proteine} nbGramme={infoUser?.keyData?.proteinCount} type='Proteines' />
+                        &lt;/div>
+                        &lt;div className='main__info'>
+                            &lt;InfoCard icone={glucide} nbGramme={infoUser?.keyData?.carbohydrateCount} type='Glucides' />
+                        &lt;/div>
+                        &lt;div className='main__info'>
+                            &lt;InfoCard icone={lipide} nbGramme={infoUser?.keyData?.lipidCount} type='Lipides' />
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    )
+}
+export default Main</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#ActivityChart">ActivityChart</a></li><li><a href="global.html#CompRadar">CompRadar</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#InfoCard">InfoCard</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#Performances">Performances</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#Session">Session</a></li><li><a href="global.html#useFetch">useFetch</a></li><li><a href="global.html#User">User</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Oct 05 2022 13:48:47 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -15,6 +15,10 @@ import TimeSessionsChart from '../../components/TimeSessionsChart/TimeSessionsCh
 import ScoreChart from '../../components/ScoreChart/ScoreChart';
 import InfoCard from '../../components/InfoCard/InfoCard';
 
+/**
+ * Main page of the application
+ * @returns Main.jsx
+ */
 function Main() {
 
     //as a prototype, this website need the userID to be set manually

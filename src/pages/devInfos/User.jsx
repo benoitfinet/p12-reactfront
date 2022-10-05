@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom"
 import useFetch from '../../components/customHook/usefetch';
 import UserFactory from '../../factories/UserFactory';
 
+/**
+ * Developer page for user informations
+ * @returns User.jsx
+ */
 function User() {
 
     //use to target the if directly from url on screen

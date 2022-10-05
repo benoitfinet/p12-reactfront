@@ -3,7 +3,11 @@ import { useParams } from "react-router-dom";
 import useFetch from '../../components/customHook/usefetch';
 import AverageSessionsFactory from '../../factories/AverageSessionsFactory';
 
-function Activity() {
+/**
+ * Developer page for time Sessions
+ * @returns Session.jsx
+ */
+function Session() {
 
     //use to target the if directly from url on screen
     let { id } = useParams();
@@ -18,4 +22,4 @@ function Activity() {
     )
 }
 
-export default Activity
+export default Session

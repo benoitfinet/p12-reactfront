@@ -8,6 +8,11 @@ import { PropTypes } from "prop-types";
 import useFetch from '../customHook/usefetch';
 import Loader from '../Loader/Loader';
 
+/**
+ * The score chart
+ * @param {number} id : set the id of user
+ * @returns ScoreChart.jsx
+ */
 function ScoreChart({ id }) {
 
   //Fetching datas from API
@@ -16,7 +21,7 @@ function ScoreChart({ id }) {
   /**
    * Required for customized the legend in the chart
    * Please refere to the Recharts documentation (https://recharts.org/en-US/api/Legend)
-   * @param payload
+   * @param {string} payload : use to set the value we are looking for inside the array
    * @returns customized legend components
    */
   function CustomLegendScore(payload) {

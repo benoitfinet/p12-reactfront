@@ -2,6 +2,13 @@ import './infoCard.scss';
 
 import { PropTypes } from "prop-types";
 
+/**
+ * 
+ * @param {string} icone : set the path of the icon asset
+ * @param {number} nbGramme : set the number of kCal burned by the user
+ * @param {string} type : using here to have an alternate identifier for the icon
+ * @returns InfoCard.jsx
+ */
 function InfoCard({ icone, nbGramme, type }) {
   return (
     <div className='information'>

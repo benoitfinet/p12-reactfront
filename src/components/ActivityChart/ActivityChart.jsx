@@ -8,6 +8,12 @@ import { BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, Y
 import useFetch from '../customHook/usefetch';
 import Loader from "../Loader/Loader";
 
+
+/**
+ * The chart for activities
+ * @param {number} id : set the id of user
+ * @returns ActivityChart.jsx
+ */
 function ActivityChart({ id }) {
 
   const [activityData, isLoaded, error] = useFetch(`http://localhost:3000/user/${id}/activity`, ActivityFactory, "api", 2000, false);
@@ -15,7 +21,8 @@ function ActivityChart({ id }) {
   /**
    * Required for customized the tooltip in the chart
    * Please refere to the Recharts documentation (https://recharts.org/en-US/guide/customize)
-   * @param active, payload
+   * @param {boolean} active : use to know if user is on mouse over the chart
+   * @param {object} payload : use to set the value we are looking for inside the array
    * @returns customized tooltip components
    */
   const CustomTooltip = ({ active, payload }) => {
@@ -33,7 +40,7 @@ function ActivityChart({ id }) {
   /**
    * Required for customized the formatter in the chart
    * Please refere to the Recharts documentation (https://recharts.org/en-US/api/Tooltip#formatter)
-   * @param value
+   * @param {object} value : set the value of datas
    * @returns customized formatter components
    */
   const customFormatter = (value) => {

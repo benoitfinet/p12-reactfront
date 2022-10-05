@@ -8,6 +8,11 @@ import { PropTypes } from "prop-types";
 import useFetch from '../customHook/usefetch';
 import Loader from '../Loader/Loader';
 
+/**
+ * The time sessions chart
+ * @param {number} id : set the id of user
+ * @returns TimeSessionsChart.jsx
+ */
 function ActivityChart({ id }) {
 
     //Fetching datas from API
@@ -16,7 +21,8 @@ function ActivityChart({ id }) {
     /**
      * Required for customized the tooltip in the chart
      * Please refere to the Recharts documentation (https://recharts.org/en-US/guide/customize)
-     * @param active, payload
+     * @param {boolean} active : use to know if user is on mouse over the chart
+     * @param {object} payload : use to set the value we are looking for inside the array
      * @returns customized tooltip components
      */
     const CustomTooltip = ({ active, payload }) => {

@@ -6,6 +6,10 @@ import Meditate from "../../assets/Images/meditate.png"
 import Dumbbells from "../../assets/Images/dumbbells.png"
 import Cycling from "../../assets/Images/cycling.png"
 
+/**
+ * Header (navbars) of the application
+ * @returns Header.jsx
+ */
 function Header() {
     return (
         <div>
@@ -25,7 +29,7 @@ function Header() {
                     <li><img className='sideNav__list--img' src={Cycling} alt="cycling" /></li>
                     <li><img className='sideNav__list--img' src={Dumbbells} alt="dumbbells" /></li>
                 </ul>
-                <p className='sideNav__list--text'>Copiryght, SportSee 2020</p>
+                <p className='sideNav__list--text'>Copyright, SportSee 2020</p>
             </nav>
         </div>
     )

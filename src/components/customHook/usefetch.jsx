@@ -3,11 +3,11 @@ import { PropTypes } from "prop-types";
 
 /**
  * A custom hook to fetch data from an url in a component
- * @param url : url of the data we want to fetch
- * @param Factory : factory pattern to use constructor pattern
- * @param type : define the type of the API, in case we had to change API
- * @param loading : set manually the timer of the loader component
- * @param err : set the error message
+ * @param {string} url : url of the data we want to fetch
+ * @param {string} Factory : factory pattern to use constructor pattern
+ * @param {string} type : define the type of the API, in case we had to change API
+ * @param {number} loading : set manually the timer of the loader component
+ * @param {boolean} err : set the error message
  * @return the data matching the factory and model
  * @return the booleen for the loader
  * @return the booleen for the error

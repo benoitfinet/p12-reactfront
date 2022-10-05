@@ -4,6 +4,10 @@ import useFetch from '../../components/customHook/usefetch';
 import UserFactory from '../../factories/UserFactory';
 import ActivityFactory from '../../factories/ActivityFactory';
 
+/**
+ * Developer page for activities
+ * @returns Activity.jsx
+ */
 function Activity() {
 
     //use to target the if directly from url on screen

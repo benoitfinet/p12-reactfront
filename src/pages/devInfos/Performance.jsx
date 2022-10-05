@@ -3,7 +3,11 @@ import { useParams } from "react-router-dom";
 import useFetch from '../../components/customHook/usefetch';
 import PerformanceFactory from '../../factories/PerformanceFactory';
 
-function Activity() {
+/**
+ * Developer page for performances
+ * @returns Performances.jsx
+ */
+function Performances() {
 
     //use to target the if directly from url on screen
     let { id } = useParams();
@@ -18,4 +22,4 @@ function Activity() {
     )
 }
 
-export default Activity
+export default Performances
