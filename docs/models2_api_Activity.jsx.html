@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/InfoCard/InfoCard.jsx</title>
+    <title>JSDoc: Source: models2/api/Activity.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/InfoCard/InfoCard.jsx</h1>
+    <h1 class="page-title">Source: models2/api/Activity.jsx</h1>
 
     
 
@@ -26,39 +26,41 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import './infoCard.scss';
+            <pre class="prettyprint source linenums"><code>class Activity {
+    constructor(data) {
+        this._userId = data.userId;
+        this._sessions = data.sessions;
+    }
 
-import { PropTypes } from "prop-types";
+    /**
+     * Get userId from datas Activity
+     * @return userId
+     */
+    get userId() {
+        return this._userId;
+    }
 
-/**
- * 
- * @param {string} icone : set the path of the icon asset
- * @param {number} nbGramme : set the number of kCal burned by the user
- * @param {string} type : using here to have an alternate identifier for the icon
- * @returns InfoCard.jsx
- */
-function InfoCard({ icone, nbGramme, type }) {
-  return (
-    &lt;div className='information'>
-      &lt;div className="information__details">
-        &lt;img src={icone} alt={type} />
-      &lt;/div>
-      &lt;div>
-        {type === 'Calories' ? &lt;p className='information__unity'> {nbGramme}kCal &lt;/p> : &lt;p className='information__unity'> {nbGramme}g &lt;/p>}
-        &lt;p className='information__name'> {type} &lt;/p>
-      &lt;/div>
-    &lt;/div>
-  )
+    /**
+     * Get datas of session's day from datas Activity
+     * @return day
+     * @return kilogram
+     * @return calories
+     * @return index
+     */
+    get sessions() {
+        return this._sessions.map((session, index = 0) => {
+            index++;
+            return {
+                day: session.day,
+                kilogram: session.kilogram,
+                calories: session.calories,
+                index: index,
+            };
+        });
+    }
 }
 
-//PropTypes for icone, nbGramme, type
-InfoCard.propTypes = {
-  icone: PropTypes.string,
-  nbGramme: PropTypes.number,
-  type: PropTypes.string
-}
-
-export default InfoCard</code></pre>
+export default Activity;</code></pre>
         </article>
     </section>
 

@@ -1,4 +1,4 @@
-import Performance from "../models/Performance";
+import Performance from "../models2/api/Performance";
 
 class PerformanceFactory {
     constructor(data, type) {

@@ -5,22 +5,41 @@ class Performance {
         this._data = data.data;
     }
 
+    /**
+     * Get userId from datas Performance
+     * @return id
+     */
     get id() {
         return this._id;
     }
-
+    /**
+     * Get kind from datas Performance
+     * @return kind
+     */
     get kind() {
         return this._kind;
     }
-
+    /**
+     * Get data from datas Performance
+     * @return data
+     */
     get data() {
         return this._data;
     }
-
+    /**
+     * Get value from datas Performance
+     * @return value
+     */
     get value() {
         return this._data.value;
     }
-
+    /**
+     * Get datas of activityData from datas Performance
+     * @return newKind
+     * @return item.kind
+     * @return value
+     * @return kind
+     */
     get activityData() {
         return this._data.map((item) => {
 
@@ -57,6 +76,10 @@ class Performance {
         });
     }
 
+    /**
+     * Get kind from datas Performance
+     * @return kind
+     */
     get nature() {
         return this._kind[1];
     }

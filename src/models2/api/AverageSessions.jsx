@@ -3,11 +3,20 @@ class AverageSessions {
         this._userId = data.userId;
         this._sessions = data.sessions;
     }
-
+    /**
+     * Get userId from datas AverageSessions
+     * @return userId
+     */
     get userId() {
         return this._userId;
     }
 
+    /**
+     * Get datas of session's day from datas AverageSessions
+     * @return session.day
+     * @return day
+     * @return sessionLength
+     */
     get sessions() {
         return this._sessions.map((session) => {
             let weekday = " ";

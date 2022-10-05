@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/InfoCard/InfoCard.jsx</title>
+    <title>JSDoc: Source: models2/api/User.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/InfoCard/InfoCard.jsx</h1>
+    <h1 class="page-title">Source: models2/api/User.jsx</h1>
 
     
 
@@ -26,39 +26,56 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import './infoCard.scss';
+            <pre class="prettyprint source linenums"><code>class User {
+    constructor(data) {
+        this._id = data.id
+        this._userInfos = data.userInfos
+        this._todayScore = data.todayScore
+        this._keyData = data.keyData
+    }
 
-import { PropTypes } from "prop-types";
+    /**
+     * Get id from datas User
+     * @return id
+     */
+    get id() {
+        return this._id;
+    }
 
-/**
- * 
- * @param {string} icone : set the path of the icon asset
- * @param {number} nbGramme : set the number of kCal burned by the user
- * @param {string} type : using here to have an alternate identifier for the icon
- * @returns InfoCard.jsx
- */
-function InfoCard({ icone, nbGramme, type }) {
-  return (
-    &lt;div className='information'>
-      &lt;div className="information__details">
-        &lt;img src={icone} alt={type} />
-      &lt;/div>
-      &lt;div>
-        {type === 'Calories' ? &lt;p className='information__unity'> {nbGramme}kCal &lt;/p> : &lt;p className='information__unity'> {nbGramme}g &lt;/p>}
-        &lt;p className='information__name'> {type} &lt;/p>
-      &lt;/div>
-    &lt;/div>
-  )
+    /**
+     * Get userInfos from datas User
+     * @return userInfos
+     */
+    get userInfos() {
+        return this._userInfos;
+    }
+
+    /**
+     * Get todayScore from datas User
+     * @return todayScore
+     */
+    get todayScore() {
+        return this._todayScore;
+    }
+
+    /**
+     * Get keyData from datas User
+     * @return keyData
+     */
+    get keyData() {
+        return this._keyData;
+    }
+
+    /**
+     * Get firstname from datas User
+     * @return userInfos.firstname
+     */
+    get firstname() {
+        return this._userInfos.firstname
+    }
 }
 
-//PropTypes for icone, nbGramme, type
-InfoCard.propTypes = {
-  icone: PropTypes.string,
-  nbGramme: PropTypes.number,
-  type: PropTypes.string
-}
-
-export default InfoCard</code></pre>
+export default User;</code></pre>
         </article>
     </section>
 

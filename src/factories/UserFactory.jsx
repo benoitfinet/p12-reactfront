@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from "../models2/api/User";
 
 class UserFactory {
     constructor(data, type) {
